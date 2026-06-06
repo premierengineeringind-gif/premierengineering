@@ -1,0 +1,1799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Latest industrial articles, engineering insights, project updates, and technology innovations for modern manufacturing — Automation, Electrical, Power Transmission, and Hydraulic Systems.">
+<title>IndusTech Insights | Engineering Knowledge Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #071C42;
+    --navy-mid: #0D2A5E;
+    --navy-light: #1A3A72;
+    --gold: #F5A623;
+    --gold-dark: #D4891A;
+    --gold-light: #FBBF5A;
+    --white: #FFFFFF;
+    --gray-light: #F5F7FA;
+    --gray-mid: #E8ECF2;
+    --gray-text: #6B7A99;
+    --body-text: #2C3652;
+    --font-heading: 'Barlow Condensed', sans-serif;
+    --font-body: 'Barlow', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+    --radius: 4px;
+    --shadow: 0 2px 20px rgba(7,28,66,0.08);
+    --shadow-hover: 0 8px 40px rgba(7,28,66,0.16);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--body-text);
+    background: var(--gray-light);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(7,28,66,0.97);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(245,166,35,0.2);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+
+  .nav-logo {
+    display: flex; align-items: center; gap: 10px;
+    text-decoration: none;
+  }
+  .nav-logo-icon {
+    width: 34px; height: 34px;
+    background: var(--gold);
+    clip-path: polygon(0 25%, 50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .nav-logo-text {
+    font-family: var(--font-heading);
+    font-size: 20px; font-weight: 700;
+    color: var(--white);
+    letter-spacing: 1px;
+  }
+  .nav-logo-text span { color: var(--gold); }
+
+  .nav-links {
+    display: flex; gap: 28px; list-style: none;
+  }
+  .nav-links a {
+    font-family: var(--font-body);
+    font-size: 13px; font-weight: 500;
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  .nav-cta {
+    background: var(--gold);
+    color: var(--navy) !important;
+    padding: 7px 18px;
+    border-radius: var(--radius);
+    font-weight: 600 !important;
+    color: var(--navy);
+  }
+  .nav-cta:hover { background: var(--gold-light) !important; color: var(--navy) !important; }
+
+  .nav-search-btn {
+    background: none; border: none; cursor: pointer;
+    color: rgba(255,255,255,0.7);
+    font-size: 18px; padding: 4px;
+    transition: color 0.2s;
+  }
+  .nav-search-btn:hover { color: var(--gold); }
+
+  .hamburger {
+    display: none;
+    flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px;
+  }
+  .hamburger span {
+    display: block; width: 22px; height: 2px;
+    background: var(--white); border-radius: 2px;
+    transition: all 0.3s;
+  }
+
+  /* ─── HERO ─── */
+  #hero {
+    padding-top: 64px;
+    min-height: 100vh;
+    background: var(--navy);
+    position: relative;
+    overflow: hidden;
+    display: flex; align-items: center;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 70% 50%, rgba(245,166,35,0.06) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 40% at 20% 80%, rgba(26,58,114,0.8) 0%, transparent 50%);
+  }
+
+  /* Industrial grid pattern */
+  .hero-grid {
+    position: absolute; inset: 0; opacity: 0.04;
+    background-image:
+      linear-gradient(var(--gold) 1px, transparent 1px),
+      linear-gradient(90deg, var(--gold) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  /* Animated circuit lines */
+  .circuit-lines {
+    position: absolute; top: 0; right: 0;
+    width: 55%; height: 100%;
+    overflow: hidden;
+  }
+
+  .circuit-lines svg {
+    width: 100%; height: 100%;
+    opacity: 0.12;
+  }
+
+  .hero-visual {
+    position: absolute;
+    right: 4%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44%;
+    max-width: 580px;
+  }
+
+  .factory-illustration {
+    width: 100%;
+    opacity: 0.85;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 56%;
+    padding: 60px 5%;
+    animation: fadeInUp 0.8s ease both;
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(245,166,35,0.12);
+    border: 1px solid rgba(245,166,35,0.3);
+    padding: 5px 14px;
+    border-radius: 2px;
+    margin-bottom: 20px;
+  }
+  .hero-tag-dot {
+    width: 6px; height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.3); }
+  }
+  .hero-tag span {
+    font-family: var(--font-mono);
+    font-size: 11px; color: var(--gold);
+    letter-spacing: 1.5px; text-transform: uppercase;
+  }
+
+  .hero-headline {
+    font-family: var(--font-heading);
+    font-size: clamp(38px, 5.5vw, 72px);
+    font-weight: 800;
+    line-height: 1.0;
+    color: var(--white);
+    letter-spacing: -0.5px;
+    margin-bottom: 16px;
+  }
+  .hero-headline .accent { color: var(--gold); }
+
+  .hero-sub {
+    font-size: 16px;
+    color: rgba(255,255,255,0.65);
+    max-width: 480px;
+    margin-bottom: 36px;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  .hero-search {
+    display: flex;
+    max-width: 500px;
+    margin-bottom: 40px;
+    box-shadow: 0 0 0 1px rgba(245,166,35,0.2);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .hero-search input {
+    flex: 1;
+    padding: 14px 18px;
+    background: rgba(255,255,255,0.07);
+    border: none; outline: none;
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: 14px;
+  }
+  .hero-search input::placeholder { color: rgba(255,255,255,0.35); }
+  .hero-search button {
+    background: var(--gold);
+    border: none; cursor: pointer;
+    padding: 0 22px;
+    color: var(--navy);
+    font-family: var(--font-heading);
+    font-size: 13px; font-weight: 700;
+    letter-spacing: 1px; text-transform: uppercase;
+    transition: background 0.2s;
+  }
+  .hero-search button:hover { background: var(--gold-light); }
+
+  .hero-stats {
+    display: flex; gap: 32px;
+  }
+  .hero-stat { }
+  .hero-stat-num {
+    font-family: var(--font-heading);
+    font-size: 28px; font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .hero-stat-label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.45);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-top: 3px;
+  }
+
+  /* ─── CATEGORY PILLS ─── */
+  .category-bar {
+    background: var(--navy-mid);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding: 0 5%;
+    position: sticky; top: 64px; z-index: 90;
+  }
+  .category-pills {
+    display: flex; gap: 0; overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .category-pills::-webkit-scrollbar { display: none; }
+  .cat-pill {
+    display: flex; align-items: center; gap: 7px;
+    padding: 14px 20px;
+    font-family: var(--font-body);
+    font-size: 13px; font-weight: 500;
+    color: rgba(255,255,255,0.55);
+    text-decoration: none; white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+    letter-spacing: 0.3px;
+  }
+  .cat-pill.active, .cat-pill:hover {
+    color: var(--gold);
+    border-bottom-color: var(--gold);
+  }
+  .cat-pill svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+  /* ─── SECTION COMMONS ─── */
+  section { padding: 72px 5%; }
+
+  .section-header {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    margin-bottom: 40px;
+    flex-wrap: wrap; gap: 12px;
+  }
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 11px; font-weight: 500;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+  .section-title {
+    font-family: var(--font-heading);
+    font-size: clamp(26px, 3.5vw, 40px);
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: -0.3px;
+    line-height: 1.1;
+  }
+  .view-all {
+    font-size: 13px; font-weight: 600;
+    color: var(--navy);
+    text-decoration: none;
+    display: flex; align-items: center; gap: 6px;
+    border-bottom: 1px solid var(--gold);
+    padding-bottom: 2px;
+    transition: color 0.2s;
+    white-space: nowrap;
+  }
+  .view-all:hover { color: var(--gold-dark); }
+  .view-all svg { width: 14px; height: 14px; }
+
+  /* ─── FEATURED ARTICLE ─── */
+  #featured { background: var(--white); }
+
+  .featured-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    background: var(--navy);
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: var(--shadow-hover);
+    transition: transform 0.3s;
+  }
+  .featured-card:hover { transform: translateY(-4px); }
+
+  .featured-image {
+    position: relative;
+    min-height: 400px;
+    overflow: hidden;
+  }
+  .featured-image-inner {
+    width: 100%; height: 100%;
+    background:
+      linear-gradient(135deg, #0D2A5E 0%, #071C42 100%);
+    position: relative;
+    min-height: 400px;
+  }
+
+  /* SVG Factory Scene */
+  .factory-scene {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .feat-badge {
+    position: absolute; top: 20px; left: 20px;
+    background: var(--gold);
+    color: var(--navy);
+    font-family: var(--font-heading);
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 2px;
+  }
+
+  .featured-content {
+    padding: 44px 48px;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .feat-cat {
+    font-family: var(--font-mono);
+    font-size: 11px; color: var(--gold);
+    text-transform: uppercase; letter-spacing: 2px;
+    margin-bottom: 14px;
+  }
+  .feat-title {
+    font-family: var(--font-heading);
+    font-size: clamp(22px, 3vw, 34px);
+    font-weight: 700; color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+  .feat-desc {
+    font-size: 14px; color: rgba(255,255,255,0.6);
+    line-height: 1.75;
+    margin-bottom: 28px;
+  }
+  .feat-meta {
+    display: flex; gap: 18px; align-items: center;
+    margin-bottom: 28px;
+  }
+  .feat-meta span {
+    font-size: 12px; color: rgba(255,255,255,0.4);
+    display: flex; align-items: center; gap: 5px;
+  }
+  .feat-meta svg { width: 13px; height: 13px; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--gold);
+    color: var(--navy);
+    font-family: var(--font-heading);
+    font-size: 13px; font-weight: 700;
+    letter-spacing: 1px; text-transform: uppercase;
+    padding: 12px 24px;
+    border-radius: var(--radius);
+    text-decoration: none;
+    border: none; cursor: pointer;
+    transition: all 0.2s;
+    align-self: flex-start;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateX(3px); }
+  .btn-primary svg { width: 14px; height: 14px; }
+
+  /* ─── ARTICLE GRID ─── */
+  #articles { background: var(--gray-light); }
+
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+  }
+
+  .article-card {
+    background: var(--white);
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: all 0.3s;
+    display: flex; flex-direction: column;
+  }
+  .article-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-hover);
+  }
+
+  .card-image {
+    height: 180px;
+    position: relative;
+    overflow: hidden;
+  }
+  .card-image-inner {
+    width: 100%; height: 100%;
+    transition: transform 0.4s;
+  }
+  .article-card:hover .card-image-inner { transform: scale(1.05); }
+
+  /* Category-specific illustrated backgrounds */
+  .bg-auto { background: linear-gradient(135deg, #071C42 0%, #1A3A72 100%); }
+  .bg-elec { background: linear-gradient(135deg, #0D2A5E 0%, #1E4D9A 100%); }
+  .bg-power { background: linear-gradient(135deg, #1A1A2E 0%, #071C42 100%); }
+  .bg-hydro { background: linear-gradient(135deg, #071C42 0%, #0D3B5C 100%); }
+  .bg-vfd   { background: linear-gradient(135deg, #0D2A5E 0%, #0D4F3A 100%); }
+  .bg-maint { background: linear-gradient(135deg, #2E1A00 0%, #6B3D00 50%, #071C42 100%); }
+
+  .card-cat-tag {
+    position: absolute; bottom: 12px; left: 12px;
+    background: rgba(7,28,66,0.85);
+    border: 1px solid rgba(245,166,35,0.4);
+    color: var(--gold);
+    font-family: var(--font-mono);
+    font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase;
+    padding: 4px 10px; border-radius: 2px;
+  }
+
+  .card-body {
+    padding: 20px 22px;
+    flex: 1;
+    display: flex; flex-direction: column;
+  }
+  .card-title {
+    font-family: var(--font-heading);
+    font-size: 18px; font-weight: 700;
+    color: var(--navy);
+    line-height: 1.25;
+    margin-bottom: 10px;
+  }
+  .card-desc {
+    font-size: 13px; color: var(--gray-text);
+    line-height: 1.65;
+    flex: 1;
+    margin-bottom: 16px;
+  }
+  .card-footer {
+    display: flex; align-items: center; justify-content: space-between;
+    border-top: 1px solid var(--gray-mid);
+    padding-top: 14px;
+  }
+  .card-meta {
+    display: flex; gap: 12px;
+  }
+  .card-meta span {
+    font-size: 11px; color: #9AA5BC;
+    display: flex; align-items: center; gap: 4px;
+  }
+  .card-meta svg { width: 12px; height: 12px; }
+  .read-more {
+    font-family: var(--font-heading);
+    font-size: 12px; font-weight: 700;
+    color: var(--navy);
+    text-decoration: none;
+    letter-spacing: 0.8px; text-transform: uppercase;
+    display: flex; align-items: center; gap: 4px;
+    transition: color 0.2s, gap 0.2s;
+  }
+  .read-more:hover { color: var(--gold-dark); gap: 8px; }
+  .read-more svg { width: 12px; height: 12px; }
+
+  /* ─── COMPANY NEWS ─── */
+  #news { background: var(--white); }
+
+  .news-grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 24px;
+  }
+
+  .news-main {
+    background: var(--navy);
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+  .news-main:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+
+  .news-main-image {
+    height: 220px;
+    background: linear-gradient(135deg, #1A3A72, #0D2A5E);
+    position: relative; overflow: hidden;
+  }
+  .news-main-body { padding: 28px 32px; }
+  .news-tag {
+    display: inline-block;
+    background: rgba(245,166,35,0.15);
+    border: 1px solid rgba(245,166,35,0.3);
+    color: var(--gold);
+    font-family: var(--font-mono);
+    font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase;
+    padding: 4px 10px; border-radius: 2px;
+    margin-bottom: 14px;
+  }
+  .news-main-title {
+    font-family: var(--font-heading);
+    font-size: 22px; font-weight: 700;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+  .news-main-desc {
+    font-size: 13px; color: rgba(255,255,255,0.55);
+    line-height: 1.7;
+    margin-bottom: 18px;
+  }
+  .news-main-meta {
+    font-size: 11px; color: rgba(255,255,255,0.35);
+    display: flex; gap: 16px;
+  }
+
+  .news-sidebar {
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  .news-item {
+    background: var(--gray-light);
+    border-radius: 6px;
+    padding: 18px 20px;
+    display: flex; gap: 16px;
+    align-items: flex-start;
+    border-left: 3px solid var(--gold);
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+  .news-item:hover { background: var(--gray-mid); transform: translateX(4px); }
+  .news-item-icon {
+    width: 38px; height: 38px; flex-shrink: 0;
+    background: var(--navy);
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .news-item-icon svg { width: 18px; height: 18px; color: var(--gold); }
+  .news-item-title {
+    font-family: var(--font-heading);
+    font-size: 15px; font-weight: 600;
+    color: var(--navy);
+    line-height: 1.3;
+    margin-bottom: 5px;
+  }
+  .news-item-date {
+    font-size: 11px; color: var(--gray-text);
+    font-family: var(--font-mono);
+  }
+
+  /* ─── NEWSLETTER ─── */
+  #newsletter {
+    background: var(--navy);
+    position: relative;
+    overflow: hidden;
+  }
+  .newsletter-bg {
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 40px,
+      rgba(245,166,35,0.02) 40px,
+      rgba(245,166,35,0.02) 80px
+    );
+  }
+  .newsletter-inner {
+    position: relative; z-index: 1;
+    max-width: 680px; margin: 0 auto;
+    text-align: center;
+  }
+  .newsletter-icon {
+    width: 60px; height: 60px;
+    background: rgba(245,166,35,0.12);
+    border: 1px solid rgba(245,166,35,0.3);
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 24px;
+  }
+  .newsletter-icon svg { width: 26px; height: 26px; color: var(--gold); }
+  .newsletter-title {
+    font-family: var(--font-heading);
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 700; color: var(--white);
+    letter-spacing: -0.3px;
+    margin-bottom: 12px;
+  }
+  .newsletter-sub {
+    font-size: 15px; color: rgba(255,255,255,0.5);
+    margin-bottom: 36px;
+    line-height: 1.7;
+  }
+  .newsletter-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .newsletter-form input {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--radius);
+    padding: 13px 16px;
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: 14px; outline: none;
+    transition: border-color 0.2s;
+  }
+  .newsletter-form input::placeholder { color: rgba(255,255,255,0.3); }
+  .newsletter-form input:focus { border-color: var(--gold); }
+  .newsletter-form .full-width { grid-column: 1 / -1; }
+  .newsletter-form button {
+    grid-column: 1 / -1;
+    background: var(--gold);
+    border: none; cursor: pointer;
+    padding: 14px;
+    border-radius: var(--radius);
+    font-family: var(--font-heading);
+    font-size: 14px; font-weight: 700;
+    color: var(--navy);
+    letter-spacing: 1.5px; text-transform: uppercase;
+    transition: all 0.2s;
+  }
+  .newsletter-form button:hover { background: var(--gold-light); }
+  .form-note {
+    font-size: 11px; color: rgba(255,255,255,0.25);
+    margin-top: 14px;
+    font-family: var(--font-mono);
+  }
+
+  /* ─── CTA ─── */
+  #cta {
+    background: var(--gray-light);
+    padding: 80px 5%;
+  }
+  .cta-inner {
+    background: linear-gradient(135deg, var(--navy-mid) 0%, var(--navy) 100%);
+    border-radius: 8px;
+    padding: 64px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 40px;
+    position: relative; overflow: hidden;
+  }
+  .cta-lines {
+    position: absolute; right: 0; top: 0; bottom: 0;
+    width: 40%; opacity: 0.06;
+    background: repeating-linear-gradient(
+      -45deg, var(--gold), var(--gold) 1px,
+      transparent 1px, transparent 20px
+    );
+  }
+  .cta-content { position: relative; flex: 1; }
+  .cta-label {
+    font-family: var(--font-mono);
+    font-size: 11px; color: var(--gold);
+    letter-spacing: 2px; text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .cta-title {
+    font-family: var(--font-heading);
+    font-size: clamp(26px, 3.5vw, 40px);
+    font-weight: 700; color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 14px;
+  }
+  .cta-text {
+    font-size: 14px; color: rgba(255,255,255,0.55);
+    max-width: 440px; line-height: 1.75;
+  }
+  .cta-actions {
+    display: flex; flex-direction: column; gap: 12px;
+    flex-shrink: 0; position: relative;
+  }
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.25);
+    color: var(--white);
+    font-family: var(--font-heading);
+    font-size: 13px; font-weight: 700;
+    letter-spacing: 1px; text-transform: uppercase;
+    padding: 12px 28px;
+    border-radius: var(--radius);
+    text-decoration: none; cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: #030E23;
+    padding: 48px 5% 28px;
+    border-top: 1px solid rgba(245,166,35,0.1);
+  }
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1.8fr 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+  .footer-brand-name {
+    font-family: var(--font-heading);
+    font-size: 20px; font-weight: 700;
+    color: var(--white); letter-spacing: 1px;
+    margin-bottom: 12px;
+  }
+  .footer-brand-name span { color: var(--gold); }
+  .footer-desc {
+    font-size: 13px; color: rgba(255,255,255,0.35);
+    line-height: 1.8; margin-bottom: 20px;
+  }
+  .footer-socials { display: flex; gap: 10px; }
+  .social-btn {
+    width: 34px; height: 34px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius);
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s; cursor: pointer;
+  }
+  .social-btn:hover { background: rgba(245,166,35,0.12); border-color: var(--gold); }
+  .social-btn svg { width: 15px; height: 15px; color: rgba(255,255,255,0.5); }
+  .social-btn:hover svg { color: var(--gold); }
+  .footer-col-title {
+    font-family: var(--font-heading);
+    font-size: 13px; font-weight: 700;
+    color: var(--white);
+    letter-spacing: 1px; text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+  .footer-links a {
+    font-size: 13px; color: rgba(255,255,255,0.35);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--gold); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding-top: 24px;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 12px;
+  }
+  .footer-copy {
+    font-size: 12px; color: rgba(255,255,255,0.2);
+    font-family: var(--font-mono);
+  }
+
+  /* ─── SEARCH OVERLAY ─── */
+  .search-overlay {
+    position: fixed; inset: 0;
+    background: rgba(7,28,66,0.95);
+    z-index: 200;
+    display: flex; align-items: flex-start; justify-content: center;
+    padding-top: 120px;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.3s;
+  }
+  .search-overlay.open { opacity: 1; pointer-events: all; }
+  .search-overlay-inner {
+    width: 100%; max-width: 640px; padding: 0 20px;
+  }
+  .search-overlay input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid var(--gold);
+    padding: 16px 0;
+    font-family: var(--font-heading);
+    font-size: 32px; font-weight: 600;
+    color: var(--white); outline: none;
+    letter-spacing: -0.3px;
+  }
+  .search-overlay input::placeholder { color: rgba(255,255,255,0.2); }
+  .search-close {
+    position: absolute; top: 80px; right: 5%;
+    background: none; border: none; cursor: pointer;
+    color: rgba(255,255,255,0.5); font-size: 28px;
+    transition: color 0.2s;
+  }
+  .search-close:hover { color: var(--gold); }
+
+  /* ─── SCROLL ANIMATIONS ─── */
+  .reveal {
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 960px) {
+    .featured-card { grid-template-columns: 1fr; }
+    .featured-image { min-height: 260px; }
+    .news-grid { grid-template-columns: 1fr; }
+    .hero-content { max-width: 100%; }
+    .hero-visual { display: none; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+    .cta-inner { flex-direction: column; padding: 40px; }
+    .cta-actions { flex-direction: row; }
+  }
+
+  @media (max-width: 640px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .articles-grid { grid-template-columns: 1fr; }
+    .newsletter-form { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr; }
+    .hero-stats { gap: 20px; }
+    .cat-pill { padding: 12px 14px; font-size: 12px; }
+    .cta-actions { flex-direction: column; }
+    section { padding: 52px 5%; }
+    .featured-content { padding: 28px 24px; }
+  }
+
+  /* Mobile nav */
+  .mobile-menu {
+    display: none;
+    position: fixed; top: 64px; left: 0; right: 0;
+    background: var(--navy-mid);
+    z-index: 99;
+    border-bottom: 1px solid rgba(245,166,35,0.15);
+  }
+  .mobile-menu.open { display: block; }
+  .mobile-menu a {
+    display: block;
+    padding: 14px 5%;
+    font-size: 15px; font-weight: 500;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .mobile-menu a:hover { color: var(--gold); }
+</style>
+</head>
+<body>
+
+<!-- Search Overlay -->
+<div class="search-overlay" id="searchOverlay">
+  <div class="search-overlay-inner">
+    <input type="text" placeholder="Search articles, topics, technology..." id="searchInput" autocomplete="off">
+    <p style="margin-top:16px; font-size:13px; color:rgba(255,255,255,0.25); font-family:var(--font-mono);">
+      Try: "PLC SCADA", "Hydraulic systems", "VFD energy saving"…
+    </p>
+  </div>
+  <button class="search-close" onclick="toggleSearch()" aria-label="Close search">✕</button>
+</div>
+
+<!-- Navigation -->
+<nav role="navigation" aria-label="Main navigation">
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-icon"></div>
+    <span class="nav-logo-text">INDUS<span>TECH</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#articles">Articles</a></li>
+    <li><a href="#news">News</a></li>
+    <li><a href="#" onclick="return false">Solutions</a></li>
+    <li><a href="#" onclick="return false">About</a></li>
+    <li><a href="#newsletter" class="nav-cta">Subscribe</a></li>
+  </ul>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <button class="nav-search-btn" onclick="toggleSearch()" aria-label="Open search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+    </button>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#articles" onclick="toggleMenu()">Articles</a>
+  <a href="#news" onclick="toggleMenu()">Company News</a>
+  <a href="#" onclick="return false">Solutions</a>
+  <a href="#" onclick="return false">About Us</a>
+  <a href="#newsletter" onclick="toggleMenu()">Subscribe</a>
+</div>
+
+<!-- Hero -->
+<section id="hero" aria-label="Hero banner">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+
+  <!-- Animated industrial scene SVG -->
+  <div class="hero-visual" aria-hidden="true">
+    <svg viewBox="0 0 500 420" fill="none" xmlns="http://www.w3.org/2000/svg" class="factory-illustration">
+      <!-- Factory floor -->
+      <rect x="0" y="340" width="500" height="80" fill="#0D2A5E" opacity="0.6"/>
+      <!-- Main machine body -->
+      <rect x="60" y="180" width="140" height="160" rx="4" fill="#1A3A72"/>
+      <rect x="60" y="180" width="140" height="24" rx="4" fill="#F5A623"/>
+      <rect x="75" y="215" width="20" height="20" rx="2" fill="#071C42"/>
+      <rect x="105" y="215" width="20" height="20" rx="2" fill="#071C42"/>
+      <rect x="135" y="215" width="20" height="20" rx="2" fill="#F5A623" opacity="0.6"/>
+      <rect x="75" y="250" width="80" height="50" rx="3" fill="#071C42"/>
+      <rect x="80" y="255" width="70" height="40" rx="2" fill="#0D2A5E"/>
+      <!-- Screen glow lines -->
+      <rect x="85" y="260" width="60" height="3" rx="1" fill="#F5A623" opacity="0.6"/>
+      <rect x="85" y="268" width="44" height="2" rx="1" fill="#F5A623" opacity="0.3"/>
+      <rect x="85" y="274" width="52" height="2" rx="1" fill="#F5A623" opacity="0.3"/>
+      <rect x="85" y="280" width="36" height="2" rx="1" fill="#F5A623" opacity="0.2"/>
+      <!-- Robotic arm -->
+      <rect x="230" y="120" width="16" height="120" rx="4" fill="#1A3A72"/>
+      <rect x="246" y="140" width="80" height="12" rx="4" fill="#F5A623" opacity="0.7"/>
+      <rect x="322" y="120" width="12" height="60" rx="4" fill="#1A3A72"/>
+      <circle cx="238" cy="140" r="10" fill="#F5A623" opacity="0.5"/>
+      <circle cx="326" cy="120" r="8" fill="#F5A623" opacity="0.3"/>
+      <!-- Arm grip -->
+      <rect x="318" y="178" width="8" height="20" rx="2" fill="#F5A623" opacity="0.7"/>
+      <rect x="330" y="178" width="8" height="20" rx="2" fill="#F5A623" opacity="0.7"/>
+      <!-- Conveyor -->
+      <rect x="40" y="320" width="420" height="20" rx="4" fill="#1A3A72"/>
+      <rect x="40" y="322" width="420" height="4" fill="#071C42"/>
+      <circle cx="80" cy="330" r="8" fill="#0D2A5E" stroke="#F5A623" stroke-width="1" opacity="0.6"/>
+      <circle cx="140" cy="330" r="8" fill="#0D2A5E" stroke="#F5A623" stroke-width="1" opacity="0.6"/>
+      <circle cx="200" cy="330" r="8" fill="#0D2A5E" stroke="#F5A623" stroke-width="1" opacity="0.6"/>
+      <circle cx="260" cy="330" r="8" fill="#0D2A5E" stroke="#F5A623" stroke-width="1" opacity="0.6"/>
+      <circle cx="320" cy="330" r="8" fill="#0D2A5E" stroke="#F5A623" stroke-width="1" opacity="0.6"/>
+      <circle cx="380" cy="330" r="8" fill="#0D2A5E" stroke="#F5A623" stroke-width="1" opacity="0.6"/>
+      <circle cx="440" cy="330" r="8" fill="#0D2A5E" stroke="#F5A623" stroke-width="1" opacity="0.6"/>
+      <!-- Product boxes on conveyor -->
+      <rect x="155" y="295" width="30" height="25" rx="2" fill="#F5A623" opacity="0.5"/>
+      <rect x="275" y="295" width="30" height="25" rx="2" fill="#F5A623" opacity="0.3"/>
+      <!-- Control panel right -->
+      <rect x="380" y="200" width="90" height="120" rx="4" fill="#1A3A72"/>
+      <rect x="380" y="200" width="90" height="20" rx="4" fill="#0D2A5E"/>
+      <circle cx="400" cy="240" r="8" fill="#F5A623" opacity="0.8"/>
+      <circle cx="425" cy="240" r="8" fill="#071C42"/>
+      <circle cx="450" cy="240" r="8" fill="#071C42"/>
+      <rect x="390" y="260" width="60" height="4" rx="2" fill="#F5A623" opacity="0.4"/>
+      <rect x="390" y="270" width="50" height="4" rx="2" fill="#F5A623" opacity="0.3"/>
+      <rect x="390" y="280" width="40" height="4" rx="2" fill="#F5A623" opacity="0.2"/>
+      <!-- Data flow dots (animated) -->
+      <circle class="data-dot" cx="130" cy="145" r="3" fill="#F5A623" opacity="0.8"/>
+      <circle cx="170" cy="120" r="2.5" fill="#F5A623" opacity="0.5"/>
+      <circle cx="210" cy="100" r="2" fill="#F5A623" opacity="0.3"/>
+      <!-- Pipes -->
+      <path d="M200 260 Q220 260 220 280 L220 320" stroke="#F5A623" stroke-width="3" fill="none" opacity="0.2" stroke-dasharray="4 4"/>
+      <!-- Status indicators -->
+      <circle cx="420" cy="168" r="5" fill="#F5A623">
+        <animate attributeName="opacity" values="1;0.2;1" dur="1.8s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="440" cy="168" r="5" fill="#4CAF50">
+        <animate attributeName="opacity" values="0.6;1;0.6" dur="2.5s" repeatCount="indefinite"/>
+      </circle>
+    </svg>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-tag">
+      <div class="hero-tag-dot"></div>
+      <span>Engineering Knowledge Hub</span>
+    </div>
+    <h1 class="hero-headline">
+      INSIGHT, UPDATE<br>
+      &amp; <span class="accent">SOLUTION</span><br>
+      FOR INDUSTRY
+    </h1>
+    <p class="hero-sub">
+      Latest industrial articles, engineering insights, project updates, and technology innovations for modern manufacturing.
+    </p>
+    <div class="hero-search">
+      <input type="text" placeholder="Search articles, topics, technology...">
+      <button>Search</button>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num">240+</div>
+        <div class="hero-stat-label">Articles</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">4</div>
+        <div class="hero-stat-label">Specializations</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">12K+</div>
+        <div class="hero-stat-label">Readers</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">8yr</div>
+        <div class="hero-stat-label">Experience</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Category Filter Bar -->
+<div class="category-bar" role="navigation" aria-label="Category filter">
+  <div class="category-pills">
+    <a href="#" class="cat-pill active">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+      All Topics
+    </a>
+    <a href="#" class="cat-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      Automation &amp; Digitalization
+    </a>
+    <a href="#" class="cat-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+      Electrical &amp; Instrumentation
+    </a>
+    <a href="#" class="cat-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+      Power Transmission
+    </a>
+    <a href="#" class="cat-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="5"/></svg>
+      Hydraulic Systems
+    </a>
+    <a href="#" class="cat-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 3l-4 4-4-4"/></svg>
+      Company News
+    </a>
+  </div>
+</div>
+
+<!-- Featured Article -->
+<section id="featured" aria-labelledby="featured-heading">
+  <div class="section-header reveal">
+    <div>
+      <div class="section-label">Editor's Pick</div>
+      <h2 class="section-title" id="featured-heading">Featured Article</h2>
+    </div>
+    <a href="#" class="view-all">
+      All Articles
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+
+  <div class="featured-card reveal">
+    <div class="featured-image">
+      <div class="featured-image-inner">
+        <div class="feat-badge">Featured</div>
+        <div class="factory-scene" aria-hidden="true">
+          <svg viewBox="0 0 400 300" width="400" height="300" fill="none">
+            <!-- IoT network diagram -->
+            <circle cx="200" cy="150" r="50" stroke="#F5A623" stroke-width="1" stroke-dasharray="6 4" opacity="0.4"/>
+            <circle cx="200" cy="150" r="90" stroke="#F5A623" stroke-width="0.5" stroke-dasharray="4 6" opacity="0.2"/>
+            <!-- Central hub -->
+            <rect x="180" y="130" width="40" height="40" rx="4" fill="#F5A623" opacity="0.15" stroke="#F5A623" stroke-width="1"/>
+            <text x="200" y="155" text-anchor="middle" fill="#F5A623" font-size="11" font-family="monospace">IoT</text>
+            <!-- Node dots -->
+            <circle cx="200" cy="60" r="12" fill="#1A3A72" stroke="#F5A623" stroke-width="1"/>
+            <text x="200" y="64" text-anchor="middle" fill="#F5A623" font-size="8" font-family="monospace">PLC</text>
+            <circle cx="290" cy="105" r="12" fill="#1A3A72" stroke="#F5A623" stroke-width="1"/>
+            <text x="290" y="109" text-anchor="middle" fill="#F5A623" font-size="8" font-family="monospace">SEN</text>
+            <circle cx="290" cy="195" r="12" fill="#1A3A72" stroke="#F5A623" stroke-width="1"/>
+            <text x="290" y="199" text-anchor="middle" fill="#F5A623" font-size="8" font-family="monospace">VFD</text>
+            <circle cx="200" cy="240" r="12" fill="#1A3A72" stroke="#F5A623" stroke-width="1"/>
+            <text x="200" y="244" text-anchor="middle" fill="#F5A623" font-size="8" font-family="monospace">HMI</text>
+            <circle cx="110" cy="195" r="12" fill="#1A3A72" stroke="#F5A623" stroke-width="1"/>
+            <text x="110" y="199" text-anchor="middle" fill="#F5A623" font-size="8" font-family="monospace">SCADA</text>
+            <circle cx="110" cy="105" r="12" fill="#1A3A72" stroke="#F5A623" stroke-width="1"/>
+            <text x="110" y="109" text-anchor="middle" fill="#F5A623" font-size="8" font-family="monospace">RTU</text>
+            <!-- Connecting lines -->
+            <line x1="200" y1="130" x2="200" y2="72" stroke="#F5A623" stroke-width="0.8" opacity="0.4"/>
+            <line x1="215" y1="135" x2="278" y2="110" stroke="#F5A623" stroke-width="0.8" opacity="0.4"/>
+            <line x1="215" y1="165" x2="278" y2="190" stroke="#F5A623" stroke-width="0.8" opacity="0.4"/>
+            <line x1="200" y1="170" x2="200" y2="228" stroke="#F5A623" stroke-width="0.8" opacity="0.4"/>
+            <line x1="185" y1="165" x2="122" y2="190" stroke="#F5A623" stroke-width="0.8" opacity="0.4"/>
+            <line x1="185" y1="135" x2="122" y2="110" stroke="#F5A623" stroke-width="0.8" opacity="0.4"/>
+            <!-- Animated data pulses -->
+            <circle r="4" fill="#F5A623" opacity="0.8">
+              <animateMotion dur="2s" repeatCount="indefinite" path="M200,130 L200,72"/>
+              <animate attributeName="opacity" values="0.8;0;0.8" dur="2s" repeatCount="indefinite"/>
+            </circle>
+            <circle r="4" fill="#F5A623" opacity="0.6">
+              <animateMotion dur="2.5s" repeatCount="indefinite" path="M215,135 L278,110"/>
+              <animate attributeName="opacity" values="0.6;0;0.6" dur="2.5s" repeatCount="indefinite"/>
+            </circle>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="featured-content">
+      <div class="feat-cat">Industrial Automation &amp; Digitalization</div>
+      <h2 class="feat-title">Industrial IoT Architecture for Smart Factory Implementation: A Comprehensive Guide</h2>
+      <p class="feat-desc">
+        Explore how Industrial IoT transforms traditional manufacturing floors into intelligent, connected smart factories. From sensor networks to cloud analytics, discover the key components, protocols (MQTT, OPC-UA), and implementation strategies for successful Industry 4.0 deployment.
+      </p>
+      <div class="feat-meta">
+        <span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          May 28, 2025
+        </span>
+        <span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          12 min read
+        </span>
+        <span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          3.4K views
+        </span>
+      </div>
+      <a href="#" class="btn-primary">
+        Read Full Article
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Latest Articles -->
+<section id="articles" aria-labelledby="articles-heading">
+  <div class="section-header reveal">
+    <div>
+      <div class="section-label">Latest Publications</div>
+      <h2 class="section-title" id="articles-heading">Engineering Articles</h2>
+    </div>
+    <a href="#" class="view-all">
+      View All
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+
+  <div class="articles-grid">
+    <!-- Card 1 -->
+    <article class="article-card reveal">
+      <div class="card-image">
+        <div class="card-image-inner bg-auto">
+          <svg viewBox="0 0 280 180" width="100%" height="100%" fill="none" style="display:block" aria-hidden="true">
+            <rect x="20" y="30" width="80" height="60" rx="3" fill="#1A3A72"/>
+            <rect x="20" y="30" width="80" height="14" rx="3" fill="#F5A623" opacity="0.7"/>
+            <rect x="30" y="52" width="10" height="10" rx="1" fill="#071C42"/>
+            <rect x="46" y="52" width="10" height="10" rx="1" fill="#F5A623" opacity="0.5"/>
+            <rect x="62" y="52" width="10" height="10" rx="1" fill="#071C42"/>
+            <rect x="30" y="68" width="60" height="3" rx="1" fill="#F5A623" opacity="0.3"/>
+            <rect x="30" y="75" width="44" height="2" rx="1" fill="#F5A623" opacity="0.2"/>
+            <!-- PLC connection lines -->
+            <line x1="100" y1="60" x2="160" y2="60" stroke="#F5A623" stroke-width="1" stroke-dasharray="4 3" opacity="0.4"/>
+            <line x1="100" y1="75" x2="160" y2="90" stroke="#F5A623" stroke-width="1" stroke-dasharray="4 3" opacity="0.3"/>
+            <!-- SCADA screen -->
+            <rect x="160" y="25" width="100" height="70" rx="3" fill="#0D2A5E"/>
+            <rect x="160" y="25" width="100" height="12" rx="3" fill="#071C42"/>
+            <text x="210" y="35" text-anchor="middle" fill="#F5A623" font-size="7" font-family="monospace" opacity="0.8">SCADA</text>
+            <rect x="168" y="42" width="84" height="2" rx="1" fill="#F5A623" opacity="0.4"/>
+            <rect x="168" y="48" width="60" height="2" rx="1" fill="#F5A623" opacity="0.3"/>
+            <polyline points="168,70 180,58 195,65 210,55 225,62 240,52 252,58" stroke="#F5A623" stroke-width="1.5" fill="none" opacity="0.7"/>
+            <!-- Network dots -->
+            <circle cx="200" cy="130" r="16" fill="#1A3A72" stroke="#F5A623" stroke-width="0.8"/>
+            <text x="200" y="134" text-anchor="middle" fill="#F5A623" font-size="8" font-family="monospace">IoT</text>
+            <circle cx="150" cy="145" r="10" fill="#1A3A72" stroke="#F5A623" stroke-width="0.5" opacity="0.7"/>
+            <circle cx="250" cy="145" r="10" fill="#1A3A72" stroke="#F5A623" stroke-width="0.5" opacity="0.7"/>
+            <line x1="190" y1="135" x2="160" y2="142" stroke="#F5A623" stroke-width="0.5" opacity="0.4"/>
+            <line x1="210" y1="135" x2="240" y2="142" stroke="#F5A623" stroke-width="0.5" opacity="0.4"/>
+          </svg>
+        </div>
+        <span class="card-cat-tag">PLC &amp; SCADA</span>
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">PLC & SCADA Integration: From Field Devices to Control Room</h3>
+        <p class="card-desc">A practical guide to connecting PLCs with SCADA systems — covering communication protocols, HMI design, and alarm management for industrial process control.</p>
+        <div class="card-footer">
+          <div class="card-meta">
+            <span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+              Jun 2, 2025
+            </span>
+            <span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              9 min
+            </span>
+          </div>
+          <a href="#" class="read-more">
+            Read More
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Card 2 -->
+    <article class="article-card reveal reveal-delay-1">
+      <div class="card-image">
+        <div class="card-image-inner bg-elec">
+          <svg viewBox="0 0 280 180" width="100%" height="100%" fill="none" style="display:block" aria-hidden="true">
+            <!-- Electrical symbol background -->
+            <circle cx="140" cy="90" r="55" stroke="#F5A623" stroke-width="0.8" opacity="0.15"/>
+            <!-- Transformer symbol -->
+            <circle cx="110" cy="90" r="28" stroke="#F5A623" stroke-width="1.5" fill="none" opacity="0.5"/>
+            <circle cx="162" cy="90" r="28" stroke="#F5A623" stroke-width="1.5" fill="none" opacity="0.5"/>
+            <!-- Waveforms -->
+            <polyline points="30,90 50,70 60,110 70,70 80,90" stroke="#F5A623" stroke-width="2" fill="none" opacity="0.7"/>
+            <polyline points="205,90 225,70 235,110 245,70 255,90" stroke="#F5A623" stroke-width="2" fill="none" opacity="0.5"/>
+            <!-- Measurement instrument -->
+            <rect x="50" y="130" width="70" height="35" rx="3" fill="#1A3A72"/>
+            <text x="85" y="148" text-anchor="middle" fill="#F5A623" font-size="9" font-family="monospace">4-20mA</text>
+            <text x="85" y="158" text-anchor="middle" fill="#F5A623" font-size="7" font-family="monospace" opacity="0.5">TRANSMITTER</text>
+            <!-- Signal line -->
+            <line x1="120" y1="145" x2="190" y2="145" stroke="#F5A623" stroke-width="1" stroke-dasharray="5 3" opacity="0.4"/>
+            <!-- Field instrument -->
+            <rect x="190" y="133" width="55" height="24" rx="3" fill="#0D2A5E" stroke="#F5A623" stroke-width="0.5" opacity="0.7"/>
+            <text x="217" y="148" text-anchor="middle" fill="#F5A623" font-size="8" font-family="monospace" opacity="0.8">PT-101</text>
+            <!-- Lightning bolts -->
+            <path d="M145 30 L138 50 L145 50 L138 70" stroke="#F5A623" stroke-width="2" fill="none" opacity="0.4"/>
+          </svg>
+        </div>
+        <span class="card-cat-tag">E&amp;I Engineering</span>
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">4-20mA Loop: Mastering Instrument Signal Wiring & Troubleshooting</h3>
+        <p class="card-desc">Everything you need to know about 4-20mA current loop signals in industrial instrumentation — calibration, grounding, shielding, and fault diagnosis techniques.</p>
+        <div class="card-footer">
+          <div class="card-meta">
+            <span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+              May 20, 2025
+            </span>
+            <span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              7 min
+            </span>
+          </div>
+          <a href="#" class="read-more">
+            Read More
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Card 3 -->
+    <article class="article-card reveal reveal-delay-2">
+      <div class="card-image">
+        <div class="card-image-inner bg-power">
+          <svg viewBox="0 0 280 180" width="100%" height="100%" fill="none" style="display:block" aria-hidden="true">
+            <!-- Gearbox cross-section style -->
+            <circle cx="100" cy="90" r="45" fill="#1A3A72" stroke="#F5A623" stroke-width="1" opacity="0.6"/>
+            <circle cx="100" cy="90" r="32" fill="#071C42" stroke="#F5A623" stroke-width="0.5" opacity="0.4"/>
+            <circle cx="100" cy="90" r="8" fill="#F5A623" opacity="0.6"/>
+            <!-- Gear teeth -->
+            <path d="M100 40 L106 52 L94 52 Z" fill="#F5A623" opacity="0.4"/>
+            <path d="M100 140 L106 128 L94 128 Z" fill="#F5A623" opacity="0.4"/>
+            <path d="M50 90 L62 96 L62 84 Z" fill="#F5A623" opacity="0.4"/>
+            <path d="M150 90 L138 96 L138 84 Z" fill="#F5A623" opacity="0.4"/>
+            <!-- Second gear -->
+            <circle cx="195" cy="105" r="30" fill="#1A3A72" stroke="#F5A623" stroke-width="0.8" opacity="0.5"/>
+            <circle cx="195" cy="105" r="8" fill="#F5A623" opacity="0.4"/>
+            <!-- Rotation arrows -->
+            <path d="M88,52 A45,45 0 0,1 55,75" stroke="#F5A623" stroke-width="1.5" fill="none" marker-end="url(#arr)" opacity="0.6"/>
+            <!-- Shaft -->
+            <line x1="145" y1="90" x2="165" y2="100" stroke="#F5A623" stroke-width="3" opacity="0.5"/>
+            <!-- Labels -->
+            <text x="100" y="160" text-anchor="middle" fill="#F5A623" font-size="8" font-family="monospace" opacity="0.6">GEARBOX</text>
+            <text x="100" y="170" text-anchor="middle" fill="#F5A623" font-size="7" font-family="monospace" opacity="0.3">RATIO 1:20</text>
+            <!-- Bearing icons -->
+            <circle cx="230" cy="70" r="14" fill="#0D2A5E" stroke="#F5A623" stroke-width="0.8" opacity="0.6"/>
+            <circle cx="230" cy="70" r="6" fill="#071C42"/>
+            <circle cx="230" cy="70" r="2" fill="#F5A623" opacity="0.5"/>
+          </svg>
+        </div>
+        <span class="card-cat-tag">Power Transmission</span>
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">Gearbox Predictive Maintenance: Vibration Analysis & Oil Sampling</h3>
+        <p class="card-desc">Reduce unplanned downtime by implementing predictive maintenance strategies for industrial gearboxes — vibration monitoring, lubrication analysis, and thermal imaging methods.</p>
+        <div class="card-footer">
+          <div class="card-meta">
+            <span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+              May 15, 2025
+            </span>
+            <span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              11 min
+            </span>
+          </div>
+          <a href="#" class="read-more">
+            Read More
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Card 4 -->
+    <article class="article-card reveal">
+      <div class="card-image">
+        <div class="card-image-inner bg-hydro">
+          <svg viewBox="0 0 280 180" width="100%" height="100%" fill="none" style="display:block" aria-hidden="true">
+            <!-- Hydraulic circuit -->
+            <!-- Pump -->
+            <circle cx="60" cy="120" r="24" fill="#1A3A72" stroke="#F5A623" stroke-width="1" opacity="0.7"/>
+            <path d="M52 112 L72 120 L52 128 Z" fill="#F5A623" opacity="0.5"/>
+            <text x="60" y="148" text-anchor="middle" fill="#F5A623" font-size="7" font-family="monospace" opacity="0.6">PUMP</text>
+            <!-- Cylinder -->
+            <rect x="180" y="80" width="60" height="30" rx="3" fill="#1A3A72" stroke="#F5A623" stroke-width="1" opacity="0.7"/>
+            <rect x="180" y="87" width="35" height="16" fill="#F5A623" opacity="0.15"/>
+            <rect x="215" y="91" width="35" height="8" rx="2" fill="#F5A623" opacity="0.4"/>
+            <text x="210" y="126" text-anchor="middle" fill="#F5A623" font-size="7" font-family="monospace" opacity="0.6">CYLINDER</text>
+            <!-- Control valve -->
+            <rect x="125" y="82" width="30" height="28" rx="2" fill="#0D2A5E" stroke="#F5A623" stroke-width="1" opacity="0.8"/>
+            <line x1="125" y1="96" x2="155" y2="96" stroke="#F5A623" stroke-width="1.5" opacity="0.5"/>
+            <path d="M133 82 L147 96 L133 110 Z" fill="#F5A623" opacity="0.3"/>
+            <text x="140" y="126" text-anchor="middle" fill="#F5A623" font-size="7" font-family="monospace" opacity="0.6">D-VALVE</text>
+            <!-- Tank -->
+            <rect x="30" y="50" width="44" height="50" rx="2" fill="#071C42" stroke="#F5A623" stroke-width="0.8" opacity="0.6"/>
+            <!-- Fluid level -->
+            <rect x="32" y="75" width="40" height="23" fill="#F5A623" opacity="0.08"/>
+            <text x="52" y="42" text-anchor="middle" fill="#F5A623" font-size="7" font-family="monospace" opacity="0.5">TANK</text>
+            <!-- Pressure gauge -->
+            <circle cx="200" cy="50" r="18" fill="#1A3A72" stroke="#F5A623" stroke-width="0.8" opacity="0.6"/>
+            <path d="M192 56 A10 10 0 0 1 208 56" stroke="#F5A623" stroke-width="1.5" fill="none" opacity="0.5"/>
+            <line x1="200" y1="50" x2="205" y2="43" stroke="#F5A623" stroke-width="1.5" opacity="0.8"/>
+            <text x="200" y="26" text-anchor="middle" fill="#F5A623" font-size="7" font-family="monospace" opacity="0.5">200 BAR</text>
+            <!-- Pipe lines -->
+            <path d="M84 96 L125 96" stroke="#F5A623" stroke-width="2" fill="none" opacity="0.4"/>
+            <path d="M155 96 L180 96" stroke="#F5A623" stroke-width="2" fill="none" opacity="0.4"/>
+            <path d="M60 144 L60 165 L250 165 L250 96 L240 96" stroke="#F5A623" stroke-width="2" fill="none" stroke-dasharray="5 3" opacity="0.2"/>
+            <path d="M52 100 L52 50 L74 50" stroke="#F5A623" stroke-width="2" fill="none" opacity="0.3"/>
+          </svg>
+        </div>
+        <span class="card-cat-tag">Hydraulic Systems</span>
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">Hydraulic System Optimization: Pressure, Flow & Energy Efficiency</h3>
+        <p class="card-desc">Optimize hydraulic power units for peak performance — system design principles, valve selection, accumulator sizing, and energy-saving techniques for industrial presses and machinery.</p>
+        <div class="card-footer">
+          <div class="card-meta">
+            <span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+              May 10, 2025
+            </span>
+            <span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              10 min
+            </span>
+          </div>
+          <a href="#" class="read-more">
+            Read More
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Card 5 -->
+    <article class="article-card reveal reveal-delay-1">
+      <div class="card-image">
+        <div class="card-image-inner bg-vfd">
+          <svg viewBox="0 0 280 180" width="100%" height="100%" fill="none" style="display:block" aria-hidden="true">
+            <!-- VFD block -->
+            <rect x="80" y="40" width="120" height="80" rx="4" fill="#1A3A72" stroke="#F5A623" stroke-width="1"/>
+            <rect x="80" y="40" width="120" height="18" rx="4" fill="#F5A623" opacity="0.15"/>
+            <text x="140" y="53" text-anchor="middle" fill="#F5A623" font-size="9" font-family="monospace">VFD / INVERTER</text>
+            <!-- Display area -->
+            <rect x="92" y="68" width="96" height="36" rx="2" fill="#071C42"/>
+            <text x="140" y="82" text-anchor="middle" fill="#F5A623" font-size="11" font-family="monospace" font-weight="bold">48.5 Hz</text>
+            <text x="140" y="96" text-anchor="middle" fill="#F5A623" font-size="8" font-family="monospace" opacity="0.5">OUTPUT FREQ</text>
+            <!-- Energy saving chart -->
+            <polyline points="30,155 50,140 70,145 90,130 110,118 130,108 150,100 170,95 190,93 210,92 230,91 250,91" stroke="#F5A623" stroke-width="2" fill="none" opacity="0.6"/>
+            <text x="30" y="170" fill="#F5A623" font-size="7" font-family="monospace" opacity="0.4">Energy consumption</text>
+            <!-- Motor symbol -->
+            <circle cx="230" cy="80" r="24" fill="#1A3A72" stroke="#F5A623" stroke-width="1" opacity="0.6"/>
+            <text x="230" y="84" text-anchor="middle" fill="#F5A623" font-size="11" font-family="monospace">M</text>
+            <line x1="200" y1="80" x2="206" y2="80" stroke="#F5A623" stroke-width="2" opacity="0.5"/>
+            <line x1="24" y1="80" x2="80" y2="80" stroke="#F5A623" stroke-width="2" opacity="0.4"/>
+            <rect x="14" y="70" width="10" height="20" rx="1" fill="#F5A623" opacity="0.3"/>
+          </svg>
+        </div>
+        <span class="card-cat-tag">Automation</span>
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">VFD Energy Saving Technology: How Variable Frequency Drives Cut Costs</h3>
+        <p class="card-desc">Variable Frequency Drives can reduce motor energy consumption by up to 50%. Learn about speed control principles, harmonics mitigation, and proper VFD commissioning procedures.</p>
+        <div class="card-footer">
+          <div class="card-meta">
+            <span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+              May 5, 2025
+            </span>
+            <span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              8 min
+            </span>
+          </div>
+          <a href="#" class="read-more">
+            Read More
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Card 6 -->
+    <article class="article-card reveal reveal-delay-2">
+      <div class="card-image">
+        <div class="card-image-inner bg-maint">
+          <svg viewBox="0 0 280 180" width="100%" height="100%" fill="none" style="display:block" aria-hidden="true">
+            <!-- Maintenance checklist style -->
+            <rect x="50" y="30" width="100" height="130" rx="4" fill="#1A3A72" stroke="#F5A623" stroke-width="0.8" opacity="0.7"/>
+            <rect x="58" y="44" width="84" height="2" rx="1" fill="#F5A623" opacity="0.3"/>
+            <rect x="58" y="52" width="84" height="2" rx="1" fill="#F5A623" opacity="0.5"/>
+            <!-- Check items -->
+            <rect x="58" y="65" width="12" height="12" rx="2" fill="#F5A623" opacity="0.7"/>
+            <path d="M60 71 L63 74 L68 68" stroke="#1A3A72" stroke-width="2" fill="none"/>
+            <rect x="58" y="83" width="12" height="12" rx="2" fill="#F5A623" opacity="0.7"/>
+            <path d="M60 89 L63 92 L68 86" stroke="#1A3A72" stroke-width="2" fill="none"/>
+            <rect x="58" y="101" width="12" height="12" rx="2" fill="#071C42" stroke="#F5A623" stroke-width="1" opacity="0.5"/>
+            <rect x="58" y="119" width="12" height="12" rx="2" fill="#071C42" stroke="#F5A623" stroke-width="1" opacity="0.5"/>
+            <rect x="76" y="67" width="58" height="2" rx="1" fill="#F5A623" opacity="0.4"/>
+            <rect x="76" y="85" width="48" height="2" rx="1" fill="#F5A623" opacity="0.4"/>
+            <rect x="76" y="103" width="54" height="2" rx="1" fill="#F5A623" opacity="0.2"/>
+            <rect x="76" y="121" width="40" height="2" rx="1" fill="#F5A623" opacity="0.2"/>
+            <!-- Wrench icon area -->
+            <rect x="170" y="40" width="80" height="80" rx="4" fill="#0D2A5E" opacity="0.6"/>
+            <path d="M195 80 A15 15 0 0 1 220 65 L225 70 L215 75 L215 85 L225 90 A15 15 0 0 1 195 80 Z" fill="#F5A623" opacity="0.3"/>
+            <rect x="205" y="85" width="6" height="25" rx="3" fill="#F5A623" transform="rotate(40 208 97)" opacity="0.4"/>
+            <!-- Bearing analysis chart -->
+            <polyline points="170,145 185,138 200,142 215,128 230,132 245,120 260,125" stroke="#F5A623" stroke-width="1.5" fill="none" opacity="0.5"/>
+            <text x="215" y="165" text-anchor="middle" fill="#F5A623" font-size="7" font-family="monospace" opacity="0.4">VIBRATION TREND</text>
+          </svg>
+        </div>
+        <span class="card-cat-tag">Maintenance</span>
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">Bearing Failure Analysis: Early Detection Through Vibration Monitoring</h3>
+        <p class="card-desc">Identify bearing defects before catastrophic failure using FFT spectrum analysis, envelope detection, and condition monitoring best practices for rotating equipment maintenance.</p>
+        <div class="card-footer">
+          <div class="card-meta">
+            <span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+              Apr 28, 2025
+            </span>
+            <span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              13 min
+            </span>
+          </div>
+          <a href="#" class="read-more">
+            Read More
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- Company News -->
+<section id="news" aria-labelledby="news-heading">
+  <div class="section-header reveal">
+    <div>
+      <div class="section-label">Company Updates</div>
+      <h2 class="section-title" id="news-heading">Latest News</h2>
+    </div>
+    <a href="#" class="view-all">
+      All News
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+  <div class="news-grid">
+    <!-- Main news -->
+    <div class="news-main reveal">
+      <div class="news-main-image">
+        <svg viewBox="0 0 520 220" width="100%" height="100%" fill="none" aria-hidden="true" style="display:block">
+          <!-- Commissioning scene -->
+          <rect x="0" y="0" width="520" height="220" fill="#0D2A5E"/>
+          <!-- Factory outline -->
+          <rect x="30" y="80" width="180" height="120" fill="#1A3A72" opacity="0.6"/>
+          <rect x="30" y="60" width="80" height="40" fill="#1A3A72" opacity="0.5"/>
+          <rect x="280" y="100" width="120" height="100" fill="#1A3A72" opacity="0.5"/>
+          <!-- Windows/panels with glow -->
+          <rect x="50" y="95" width="30" height="25" rx="1" fill="#F5A623" opacity="0.15"/>
+          <rect x="90" y="95" width="30" height="25" rx="1" fill="#F5A623" opacity="0.25"/>
+          <rect x="130" y="95" width="30" height="25" rx="1" fill="#F5A623" opacity="0.1"/>
+          <rect x="50" y="135" width="30" height="25" rx="1" fill="#F5A623" opacity="0.1"/>
+          <rect x="90" y="135" width="30" height="25" rx="1" fill="#F5A623" opacity="0.15"/>
+          <!-- Crane/industrial element -->
+          <line x1="400" y1="20" x2="400" y2="100" stroke="#F5A623" stroke-width="3" opacity="0.4"/>
+          <line x1="350" y1="25" x2="460" y2="25" stroke="#F5A623" stroke-width="3" opacity="0.4"/>
+          <line x1="400" y1="25" x2="420" y2="100" stroke="#F5A623" stroke-width="1" stroke-dasharray="4 3" opacity="0.3"/>
+          <!-- Workers silhouettes (simple) -->
+          <circle cx="240" cy="170" r="8" fill="#F5A623" opacity="0.4"/>
+          <rect x="236" y="178" width="8" height="18" rx="2" fill="#F5A623" opacity="0.3"/>
+          <circle cx="265" cy="172" r="8" fill="#F5A623" opacity="0.3"/>
+          <rect x="261" y="180" width="8" height="18" rx="2" fill="#F5A623" opacity="0.2"/>
+          <!-- "LIVE" indicator -->
+          <circle cx="480" cy="30" r="6" fill="#F5A623">
+            <animate attributeName="opacity" values="1;0.2;1" dur="1.5s" repeatCount="indefinite"/>
+          </circle>
+          <text x="493" y="34" fill="#F5A623" font-size="10" font-family="monospace" opacity="0.8">LIVE</text>
+          <!-- Horizon/ground -->
+          <line x1="0" y1="200" x2="520" y2="200" stroke="#F5A623" stroke-width="0.5" opacity="0.2"/>
+        </svg>
+      </div>
+      <div class="news-main-body">
+        <div class="news-tag">Project Commissioning</div>
+        <h3 class="news-main-title">Successful Commissioning of Full Automation System at PT. Maju Industri Tbk</h3>
+        <p class="news-main-desc">Our engineering team has successfully completed the commissioning of a fully integrated automation system including DCS, PLC, and SCADA for the palm oil processing plant in Sumatra. The project achieved 99.2% control loop availability on startup.</p>
+        <div class="news-main-meta">
+          <span>June 1, 2025</span>
+          <span>· Engineering Team</span>
+          <span>· 5 min read</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sidebar news -->
+    <div class="news-sidebar">
+      <div class="news-item reveal">
+        <div class="news-item-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" color="#F5A623"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div>
+          <div class="news-item-title">Customer Plant Visit — Petrochemical Sector, Cilegon</div>
+          <div class="news-item-date">May 25, 2025 · Customer Visit</div>
+        </div>
+      </div>
+      <div class="news-item reveal reveal-delay-1">
+        <div class="news-item-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" color="#F5A623"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        </div>
+        <div>
+          <div class="news-item-title">Industrial Instrumentation Training — Batch 12 Completed</div>
+          <div class="news-item-date">May 18, 2025 · Training Activity</div>
+        </div>
+      </div>
+      <div class="news-item reveal reveal-delay-2">
+        <div class="news-item-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" color="#F5A623"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div>
+          <div class="news-item-title">Participating in Manufacturing Indonesia 2025 — Booth C14</div>
+          <div class="news-item-date">May 10, 2025 · Exhibition</div>
+        </div>
+      </div>
+      <div class="news-item reveal reveal-delay-3">
+        <div class="news-item-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" color="#F5A623"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <div>
+          <div class="news-item-title">ISO 9001:2015 Recertification Successfully Renewed</div>
+          <div class="news-item-date">May 3, 2025 · Company Announcement</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Newsletter -->
+<section id="newsletter" aria-labelledby="newsletter-heading">
+  <div class="newsletter-bg"></div>
+  <div class="newsletter-inner">
+    <div class="newsletter-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.68 11.9a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.84a16 16 0 0 0 6 6l.97-.97a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg>
+    </div>
+    <h2 class="newsletter-title reveal" id="newsletter-heading">Stay Updated with<br>Industrial Innovations</h2>
+    <p class="newsletter-sub reveal">
+      Get the latest engineering articles, project updates, and technology insights delivered to your inbox every week.
+    </p>
+    <form class="newsletter-form reveal" onsubmit="handleSubscribe(event)" novalidate>
+      <input type="text" placeholder="Your Full Name" required autocomplete="name">
+      <input type="email" placeholder="Work Email Address" required autocomplete="email" class="full-width" style="grid-column: auto;">
+      <input type="text" placeholder="Company / Organization" autocomplete="organization">
+      <button type="submit">Subscribe Now →</button>
+    </form>
+    <p class="form-note reveal">No spam, unsubscribe anytime. We respect your privacy.</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta" aria-labelledby="cta-heading">
+  <div class="cta-inner">
+    <div class="cta-lines"></div>
+    <div class="cta-content">
+      <div class="cta-label">Engineering Solutions</div>
+      <h2 class="cta-title" id="cta-heading">Need Engineering Solutions<br>for Your Industry?</h2>
+      <p class="cta-text">
+        Our engineering team is ready to help improve productivity, efficiency, and reliability in your operations. From system design to commissioning and ongoing support.
+      </p>
+    </div>
+    <div class="cta-actions">
+      <a href="#" class="btn-primary" style="justify-content:center; padding: 14px 32px;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.68 11.9"/><path d="M2 2l20 20"/></svg>
+        Contact Us
+      </a>
+      <a href="#" class="btn-secondary" style="justify-content:center; padding: 14px 32px;">
+        Request Consultation
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand-name">INDUS<span>TECH</span> INSIGHTS</div>
+      <p class="footer-desc">
+        Your trusted engineering knowledge hub for Automation & Digitalization, Electrical & Instrumentation, Power Transmission, and Hydraulic Systems.
+      </p>
+      <div class="footer-socials">
+        <button class="social-btn" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </button>
+        <button class="social-btn" aria-label="YouTube">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#030E23"/></svg>
+        </button>
+        <button class="social-btn" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="15" height="15"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </button>
+        <button class="social-btn" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+        </button>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Specializations</div>
+      <ul class="footer-links">
+        <li><a href="#">Automation &amp; Digitalization</a></li>
+        <li><a href="#">Electrical &amp; Instrumentation</a></li>
+        <li><a href="#">Power Transmission</a></li>
+        <li><a href="#">Hydraulic Systems</a></li>
+        <li><a href="#">Control Systems</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Resources</div>
+      <ul class="footer-links">
+        <li><a href="#">All Articles</a></li>
+        <li><a href="#">Engineering Guides</a></li>
+        <li><a href="#">Case Studies</a></li>
+        <li><a href="#">Technical Downloads</a></li>
+        <li><a href="#">Video Tutorials</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Company</div>
+      <ul class="footer-links">
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Our Projects</a></li>
+        <li><a href="#">Training Programs</a></li>
+        <li><a href="#">Contact &amp; Support</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2025 IndusTech Insights. All rights reserved.</span>
+    <span class="footer-copy" style="color:rgba(255,255,255,0.1);">Engineering Excellence · Medan, Indonesia</span>
+  </div>
+</footer>
+
+<script>
+  /* ── Scroll Reveal ── */
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        revealObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  /* ── Search Toggle ── */
+  function toggleSearch() {
+    const overlay = document.getElementById('searchOverlay');
+    overlay.classList.toggle('open');
+    if (overlay.classList.contains('open')) {
+      setTimeout(() => document.getElementById('searchInput').focus(), 300);
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+  }
+
+  document.getElementById('searchOverlay').addEventListener('click', function(e) {
+    if (e.target === this) toggleSearch();
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      const overlay = document.getElementById('searchOverlay');
+      if (overlay.classList.contains('open')) toggleSearch();
+    }
+  });
+
+  /* ── Mobile Menu ── */
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+
+  /* ── Category Pills ── */
+  document.querySelectorAll('.cat-pill').forEach(pill => {
+    pill.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.querySelectorAll('.cat-pill').forEach(p => p.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+
+  /* ── Newsletter ── */
+  function handleSubscribe(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('button');
+    const orig = btn.textContent;
+    btn.textContent = '✓ Subscribed!';
+    btn.style.background = '#4CAF50';
+    setTimeout(() => {
+      btn.textContent = orig;
+      btn.style.background = '';
+      e.target.reset();
+    }, 3000);
+  }
+
+  /* ── Hero Search ── */
+  document.querySelector('.hero-search button').addEventListener('click', function() {
+    const val = this.previousElementSibling.value.trim();
+    if (val) {
+      toggleSearch();
+      document.getElementById('searchInput').value = val;
+    }
+  });
+
+  /* ── Smooth nav highlight on scroll ── */
+  const sections = document.querySelectorAll('section[id], div[id]');
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    sections.forEach(sec => {
+      const top = sec.offsetTop - 100;
+      const bot = top + sec.offsetHeight;
+      if (scrollY >= top && scrollY < bot) {
+        document.querySelectorAll('.nav-links a').forEach(link => {
+          link.style.color = '';
+        });
+        const link = document.querySelector(`.nav-links a[href="#${sec.id}"]`);
+        if (link) link.style.color = 'var(--gold)';
+      }
+    });
+  }, { passive: true });
+</script>
+</body>
+</html>
